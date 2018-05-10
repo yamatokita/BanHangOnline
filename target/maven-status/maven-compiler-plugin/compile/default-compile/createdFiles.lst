@@ -1,0 +1,6 @@
+com\fjs\banhangonline\controller\ProductController.class
+com\fjs\banhangonline\dao\ProductDAOImpl.class
+com\fjs\banhangonline\dao\ProductDAO.class
+com\fjs\banhangonline\service\ProductService.class
+com\fjs\banhangonline\model\Product.class
+com\fjs\banhangonline\service\ProductServiceImpl.class
