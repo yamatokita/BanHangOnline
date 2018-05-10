@@ -14,6 +14,8 @@
     <context:property-placeholder location="classpath:application.properties" />
  
     <mvc:annotation-driven/>
+    
+    <mvc:default-servlet-handler />
    
     <!-- Specifying the Resource location to load JS, CSS, Images etc -->
     <mvc:resources mapping="/resources/**" location="/resources/" />

@@ -4,7 +4,7 @@
           http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
     version="3.0">
  
-    <display-name>Spring MVC Hibernate CRUD Example</display-name>
+    <display-name>Ban Hang Online</display-name>
  
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -25,6 +25,22 @@
         <servlet-name>spring</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+    <filter>
+    	<filter-name>encoding-filter</filter-name>
+    	<filter-class>
+    		org.springframework.web.filter.CharacterEncodingFilter
+    	</filter-class>
+    	<init-param>
+    		<param-name>encoding</param-name>
+    		<param-value>UTF-8</param-value>
+    	</init-param>
+    </filter>
+    	
+    <filter-mapping>
+    	<filter-name>encoding-filter</filter-name>
+    	<url-pattern>/*</url-pattern>
+    </filter-mapping>
     
     <welcome-file-list>
     	<welcome-file>/WEB-INF/pages/homeComponent.jsp</welcome-file>
