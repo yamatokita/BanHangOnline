@@ -36,20 +36,18 @@
 			<div class="thumbnail">
 				<div id="myCarousel" class="carousel slide cntr">
 						<div class="carousel-inner"> 
-							<div class="item" *ngFor ="let prod of singleCarouselProducts; let i=index">
-							
 							<c:forEach var="prod" items="${listProduct}" varStatus="loop">
-								<a class="zoomTool" href ="/products/${prod.productId}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-								<img src="${prod.imageUrl}">
-								<div class="caption">
-									<h4>
-										<a class="defaultBtn" href ="/products/${prod.productId}">Xem ngay</a> 
-										<span class="pull-right"><fmt:formatNumber value="${prod.price}" type="currency" currencySymbol=""/></span>
-									</h4>
+								<div class="item">
+									<a class="zoomTool" href ="/products/${prod.productId}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+									<img src="${prod.imageUrl}">
+									<div class="caption">
+										<h4>
+											<a class="defaultBtn" href ="/products/${prod.productId}">Xem ngay</a> 
+											<span class="pull-right"><fmt:formatNumber value="${prod.price}" type="currency" currencySymbol=""/></span>
+										</h4>
+									</div>
 								</div>
-							</c:forEach>
-							
-							</div>
+							 </c:forEach>
 						</div>
 						<a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 						<a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>

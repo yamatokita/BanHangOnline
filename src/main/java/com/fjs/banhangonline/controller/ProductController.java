@@ -32,10 +32,23 @@ public class ProductController {
     @RequestMapping(value = Routes.home )
     public ModelAndView listProduct(ModelAndView model) throws IOException {
         List<Product> listProduct = productService.getAllProducts();
+        AppGlobals.shareObj = "home";
+        
         model.addObject("listProduct", listProduct);
-        model.addObject("home", Routes.home );
+        model.addObject("home_url", Routes.home );
+        model.addObject("allProdcuts_url", Routes.home );
         model.setViewName("homeComponent");
         System.out.println(listProduct.size());
+        System.out.println(AppGlobals.shareObj);
+        return model;
+    }
+    
+    @RequestMapping(value = Routes.allProdcuts )
+    public ModelAndView AllProducts(ModelAndView model) throws IOException {
+        List<Product> allprodcuts = productService.getAllProducts();
+        model.addObject("allProdcuts", allprodcuts);
+        model.addObject("allProdcuts_url", Routes.allProdcuts );
+        model.setViewName("product-list/productListComponent");
         return model;
     }
  

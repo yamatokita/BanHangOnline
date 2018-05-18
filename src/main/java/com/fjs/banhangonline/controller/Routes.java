@@ -5,12 +5,14 @@ import java.util.HashMap;
 public class Routes {
 	
 	private static HashMap<String, String> routes;
+	
 
     public static final String home = "/banhangonline";
+    public static final String allProdcuts = home  + "/productList";
     public static final String admin = "/admin";
-    public static final String productlist = "/productlist";
     public static final String productfavorite = "/productfavorite";
     public static final String generalContent = "/generalContent";
+ 
 
     private static void setRoutes()
     {       
@@ -20,7 +22,7 @@ public class Routes {
 
             routes.put("home", home );
             routes.put("login", home + admin);
-            routes.put("login", home + productlist);
+            routes.put("login", home + allProdcuts);
             routes.put("logout", home + productfavorite);
             routes.put("logout", home + generalContent);
         }
@@ -39,6 +41,5 @@ public class Routes {
 
         return routes.get(destin);
     }
-
 
 }

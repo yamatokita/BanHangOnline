@@ -1,6 +1,8 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="com.fjs.banhangonline.controller.AppGlobals"%>
 
 <!--Lower Header Section -->
 <div id="gototop"> </div>
@@ -42,26 +44,36 @@
 			</a>
 			<div class="nav-collapse">
 				<ul class="nav">
-					<li class="active" >
-						<a routerLink="home">Trang chủ</a>
+		
+					<%-- <c:set var="url" value="${pageContext.request.requestURI}" /> --%>
+					<%-- <c:out value="${url}"></c:out> --%>
+					
+					<c:if test="${param.tabName == 'productlist'}"><%AppGlobals.shareObj="productlist";%> </c:if>
+					
+					
+					<c:set var="url" value="<%=AppGlobals.shareObj%>" />
+					
+					<li <c:if test = "${fn:contains(url, 'home')}">class="active"</c:if> > 
+						<a href="${home_url}">Trang chủ</a>
 					</li>
-					<li class="active" >
-						<a routerLink="productlist">Tất cả sản phẩm</a>
+					<li <c:if test = "${fn:contains(url, 'productlist')}">class="active"</c:if> >
+						<a href="${home_url}?tabName=productlist" >Tất cả sản phẩm</a>
 					</li>
-					<li class="active" >
-						<a routerLink="productfavorite">Sản phẩm yêu thích</a>
+					<li <c:if test = "${fn:contains(url, 'productfavorite')}">class="active"</c:if> >
+						<a href="productfavorite">Sản phẩm yêu thích</a>
 					</li>
-					<li class="active" >
-						<a routerLink="generalContent">Nội dung</a>
+					<li <c:if test = "${fn:contains(url, 'generalContent')}">class="active"</c:if> >
+						<a href="generalContent">Nội dung</a>
 					</li>
 
-					<li id="admin" style="visibility: hidden" class="active" >
-						<a routerLink="admin">Quản lý</a>
+					<li id="admin" style="visibility: hidden" <c:if test = "${fn:contains(url, 'admin')}">class="active"</c:if> >
+						<a href="admin">Quản lý</a>
 					</li> 
+					
+					<form action="#" class="navbar-search pull-left">
+						<input style="height: 30px" type="text" placeholder="Search"  [(ngModel)]="itemsearch" name="itemsearch" (keyup.enter)="gotoSearch()">
+					</form>
 				</ul>
-				<form action="#" class="navbar-search pull-left">
-					<input style="height: 30px" type="text" placeholder="Search" class="search-query span3" [(ngModel)]="itemsearch" name="itemsearch" (keyup.enter)="gotoSearch()">
-				</form>
 			</div>
 		</div>
 	</div>
