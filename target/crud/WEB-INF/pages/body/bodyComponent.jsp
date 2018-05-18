@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%-- <%@ page import="com.fjs.banhangonline.controller.BodyController"%> --%>
 
 <!-- Body Section -->
@@ -67,24 +68,33 @@
 								<%-- <p> "${listProduct.size()}"</p> --%>
 								
 								<ul class="thumbnails">
-									<li class="span3" >
+									
+										<c:set var="arr_index" value="${loop.index*4 + 3}"/>
+										<c:set var="arr_size" value="${fn:length(listProduct)/4}"/>
+										<fmt:parseNumber var="arr_number" integerOnly="true" type="number" value="${arr_size}"/>
 										
-										<c:set var="arr_pro" value="[${listProduct[loop.index*4]}, ${listProduct[loop.index*4+1]}, ${listProduct[loop.index*4+2]}, ${listProduct[loop.index*4+3]}]"/>
-										<c:forEach var="pro" items="${arr_pro}" >
-											
-											<div class="thumbnail" >
-												<c:if test="pro">
-													<a class="zoomTool" href="/products/${pro.productId}" title="add to cart">
-														<span class="icon-search"></span> XEM NGAY</a>
-													<a href="#" class="tag"></a>
-													<a href="/products/${pro.productId}">
-														<img src="${pro.imageUrl}" alt="bootstrap-ring">
-													</a>
+										<%-- <c:out value="${arr_index}"></c:out>
+										<c:out value="${arr_number}"></c:out>--%>
+										
+										<c:if test="${loop.index <= arr_number}">     
+											<c:forEach var = "i" begin = "0" end = "3">
+									         	<c:set var="pro" value="${listProduct[loop.index*4 + i]}"></c:set>
+									         	
+									         	<c:if test="${not empty pro.productId}">
+										         	<li class="span3" >
+											         	<div class="thumbnail" >
+															
+																<a class="zoomTool" href="/products/${pro.productId}" title="add to cart">
+																	<span class="icon-search"></span> XEM NGAY</a>
+																<a href="#" class="tag"></a>
+																<a href="/products/${pro.productId}">
+																	<img src="${pro.imageUrl}" alt="bootstrap-ring">
+																</a>
+														 </div>
+													 </li>
 												</c:if>
-											</div>
-											
-										</c:forEach>
-									</li>
+									    	 </c:forEach> 
+										</c:if>   
 								</ul>
 							</c:forEach>
 						</div> 
@@ -106,35 +116,36 @@
 			<div class="row-fluid">
 				<ul class="thumbnails">
 				
-					<div>
+					
 					<c:forEach var="pro" items="${listProduct}" varStatus="loop">
-							<li class="span4">
-								<div class="thumbnail">
+						<div>
+							<li class="span3">
+								<div class="thumbnail" >
 									<a class="zoomTool" href="/products/${pro.productId}" title="add to cart">
 										<span class="icon-search"></span> XEM NGAY</a>
 									<a href="/products/${pro.productId}">
 										<img src="${pro.imageUrl}" alt="">
 									</a>
 									<div class="caption">
-										<h5>${pro.productName}</h5>
+										<h5>${listProduct[loop.index].productName}</h5>
 										<h4>
 											<a class="defaultBtn" href="/products/${pro.productId}" title="Click to view">
 												<span class="icon-zoom-in"></span>
 											</a>
-											<button (click)="addCart(${pro.productId})" class="shopBtn" data-toggle="modal" data-target="#myModal" title="Thêm giỏ hàng">
-												<span class="icon-plus"></span></button>
-											<%-- <span class="pull-right">${{pro.price | number: '1.2-2'}}</span> --%>
+											
+											<%-- <div class="pull-right">${{pro.price | number: '1.2-2'}}</div> --%>
 											
 											<span class="pull-right">
+												<button (click)="addCart(${pro.productId})" class="shopBtn" data-toggle="modal" data-target="#myModal" title="Thêm giỏ hàng">
+												<span class="icon-plus"></span></button>
 												<fmt:formatNumber value="${pro.price}" type="currency" currencySymbol=""/>
 											</span>
 										</h4>
 									</div>
 								</div>
 							</li>
-						</c:forEach>
-					</div> 
-					
+						</div>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>

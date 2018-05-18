@@ -1,4 +1,0 @@
-0:0:0:0:0:0:0:1 - - [10/May/2018:15:58:34 +0700] "GET /BanhangOnline HTTP/1.1" 404 - http-bio-8080-exec-1 0
-0:0:0:0:0:0:0:1 - - [10/May/2018:15:58:37 +0700] "GET /BanhangOnline HTTP/1.1" 404 - http-bio-8080-exec-6 0
-0:0:0:0:0:0:0:1 - - [10/May/2018:15:59:11 +0700] "GET /BanHangOnline HTTP/1.1" 404 - http-bio-8080-exec-10 0
-0:0:0:0:0:0:0:1 - - [10/May/2018:15:59:41 +0700] "GET / HTTP/1.1" 404 - http-bio-8080-exec-3 0
