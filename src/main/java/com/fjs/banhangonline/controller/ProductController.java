@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fjs.banhangonline.model.Product;
@@ -30,16 +31,33 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping(value = Routes.home )
-    public ModelAndView listProduct(ModelAndView model) throws IOException {
-        List<Product> listProduct = productService.getAllProducts();
+    public ModelAndView listProduct(@RequestParam(value = "page", defaultValue = "1") int page, ModelAndView model) throws IOException {
+        
+    	List<Product> listProduct = productService.getAllProducts();
+    	List<Product> listProductPaging = productService.getProductPaging(page);
+    	
+	    int startpage = (int) (page - AppGlobals.limitResultsPerPage > 0?page - AppGlobals.limitResultsPerPage:1);
+	    int endpage =  (listProduct.size() / AppGlobals.limitResultsPerPage)  + (listProduct.size() % AppGlobals.limitResultsPerPage>0?1:0);
+    
+    	
+    	
+    	
         AppGlobals.shareObj = "home";
         
         model.addObject("listProduct", listProduct);
+
         model.addObject("home_url", Routes.home );
         model.addObject("allProdcuts_url", Routes.home );
         model.setViewName("homeComponent");
+        /*--------------------------------------------------------------*/
+        model.addObject("listProductPaging", listProductPaging);
+        model.addObject("startpage",startpage);
+        model.addObject("endpage",endpage);
+
         System.out.println(listProduct.size());
-        System.out.println(AppGlobals.shareObj);
+        System.out.println(listProduct.size() / AppGlobals.limitResultsPerPage);
+        System.out.println(listProduct.size() % AppGlobals.limitResultsPerPage>0?1:0);
+        
         return model;
     }
     

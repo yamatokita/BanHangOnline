@@ -9,7 +9,7 @@
 <header id="header">
 	<div class="row">
 		<div class="span4">
-			<a class="logo" href="getHomePage">
+			<a class="logo" href="${home_url}">
 				<span>Twitter Bootstrap ecommerce template</span>
 				<img src="resources/img/lotus.png" alt="bootstrap sexy shop">
 			</a>
@@ -48,8 +48,8 @@
 					<%-- <c:set var="url" value="${pageContext.request.requestURI}" /> --%>
 					<%-- <c:out value="${url}"></c:out> --%>
 					
+					<c:if test="${param.tabName == ''}"><%AppGlobals.shareObj="home";%> </c:if>
 					<c:if test="${param.tabName == 'productlist'}"><%AppGlobals.shareObj="productlist";%> </c:if>
-					
 					
 					<c:set var="url" value="<%=AppGlobals.shareObj%>" />
 					

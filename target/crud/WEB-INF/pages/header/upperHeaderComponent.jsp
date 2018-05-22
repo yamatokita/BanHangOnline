@@ -13,7 +13,7 @@
 					<a href="#"><span class="icon-youtube"></span></a>
 					<a href="#"><span class="icon-tumblr"></span></a>
 				</div>
-				<a href="${home}" class="active"> <span class="icon-home"></span> Trang chủ</a> 
+				<a href="${home_url}" class="active"> <span class="icon-home"></span> Trang chủ</a> 
 				<a href="contact" class="active"><span class="icon-edit"></span> Liên hệ</a>
 				<a href="aboutUs" class="active"><span class="icon-envelope"></span> Giới thiệu</a>
 				<%-- <a href="cart" class="active"><span class="icon-shopping-cart"></span> {{totalCart}} Sản phẩm - <span class="badge badge-warning"> ${{totalCurrency | number: '1.2-2'}}</span></a> --%>

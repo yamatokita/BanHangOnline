@@ -19,6 +19,11 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> getAllProducts() {
 		return productDao.getAllProducts();
 	}
+	
+	@Transactional
+	public List<Product> getProductPaging(int page){
+		return productDao.getProductPaging(page);
+	}
 
 	@Transactional
 	public Product getProduct(int product_id) {

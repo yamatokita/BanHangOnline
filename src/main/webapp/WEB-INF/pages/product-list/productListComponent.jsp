@@ -8,7 +8,7 @@
 	<%@ include file="../body/sidebarComponent.jsp" %>
 	<div class="span9">
 		<div class="well well-small">
-			<c:forEach var="pro" items="${listProduct}" varStatus="loop">
+			<c:forEach var="pro" items="${listProductPaging}" varStatus="loop">
 
 				<div class="row-fluid">
 					<div style="margin-top: 20px" class="span2">
@@ -36,6 +36,8 @@
 			</c:forEach>
 			<hr class="soften">
 		</div>
+		
+		
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" role="dialog">
 			<div class="modal-dialog">
@@ -53,8 +55,28 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- <pagination-controls (pageChange)="page = $event" id="1" maxSize="5" directionLinks="true" autoHide="true">
-		</pagination-controls> -->
+		
+		<c:set var="cur_page" value="${param.page}"/>
+		<div class="pagination">
+		    <ul>
+		        	<li>
+		        	<c:if test="${cur_page > startpage}">
+		        		<a href="${home_url}?tabName=productlist&page=${cur_page-1}">&lt;&lt;Previous</a>
+		        	</c:if>
+		        	</li>
+		        	
+			        <c:forEach begin="${startpage}" end="${endpage}" var="p">
+			        	<li <c:if test="${cur_page == p}">class="active"</c:if>>
+			        	<a href="${home_url}?tabName=productlist&page=${p}">${p}</a>
+			        	</li>
+			        </c:forEach>
+			        <li>
+			        <c:if test="${cur_page < endpage}">
+			        	<a href="${home_url}?tabName=productlist&page=${cur_page+1}">Next&gt;&gt;</a>
+			        </c:if>
+			        </li>
+		        </li>
+		    </ul>
+		</div>
 	</div>
 </div>
