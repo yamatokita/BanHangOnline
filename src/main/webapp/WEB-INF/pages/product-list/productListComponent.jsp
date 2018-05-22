@@ -22,7 +22,7 @@
 	
 					<div class="span5 alignR">
 						<form class="form-horizontal qtyFrm">
-							<h3><fmt:formatNumber value="${pro.price}" type="currency" currencySymbol=""/></h3>
+							<h3><fmt:formatNumber value="${pro.price}" type="currency" currencyCode="USD" currencySymbol=""/></h3>
 							<label class="checkbox"><input type="checkbox"> Thêm vào mục yêu thích</label>
 							<div class="btn-group">
 								<button (click)="addCart(${pro.productId})" class="defaultBtn" data-toggle="modal" data-target="#myModal">
@@ -59,22 +59,22 @@
 		<c:set var="cur_page" value="${param.page}"/>
 		<div class="pagination">
 		    <ul>
-		        	<li>
+	        	<li>
 		        	<c:if test="${cur_page > startpage}">
 		        		<a href="${home_url}?tabName=productlist&page=${cur_page-1}">&lt;&lt;Previous</a>
 		        	</c:if>
+	        	</li>
+	        	
+		        <c:forEach begin="${startpage}" end="${endpage}" var="p">
+		        	<li <c:if test="${cur_page == p}">class="active"</c:if>>
+		        		<a href="${home_url}?tabName=productlist&page=${p}">${p}</a>
 		        	</li>
-		        	
-			        <c:forEach begin="${startpage}" end="${endpage}" var="p">
-			        	<li <c:if test="${cur_page == p}">class="active"</c:if>>
-			        	<a href="${home_url}?tabName=productlist&page=${p}">${p}</a>
-			        	</li>
-			        </c:forEach>
-			        <li>
+		        </c:forEach>
+		        
+		        <li>
 			        <c:if test="${cur_page < endpage}">
 			        	<a href="${home_url}?tabName=productlist&page=${cur_page+1}">Next&gt;&gt;</a>
 			        </c:if>
-			        </li>
 		        </li>
 		    </ul>
 		</div>

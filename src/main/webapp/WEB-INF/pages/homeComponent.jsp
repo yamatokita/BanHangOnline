@@ -43,10 +43,25 @@
 	</c:if> 
 	<c:if test = "${fn:contains(url, 'productlist')}">
 		<%@ include file="product-list/productListComponent.jsp" %>   
-	</c:if> 				
+	</c:if> 
 	
+	<c:if test = "${fn:contains(url, 'generalcontent')}">
+		<%@ include file="general-content/generalContentComponent.jsp" %>   
+	</c:if> 
+	
+	<c:if test = "${fn:contains(url, 'aboutus')}">
+		<%@ include file="about-us/aboutUsComponent.jsp" %>   
+	</c:if>
+	 
+	<c:if test = "${fn:contains(url, 'contact')}">
+		<%@ include file="contact/contactComponent.jsp" %>   
+	</c:if> 
+	
+	<c:if test = "${fn:contains(url, 'itemsearch')}">
+		<%@ include file="search/searchComponent.jsp" %>   
+	</c:if> 
 
-	
+
 	<%@ include file="footer/clientsComponent.jsp" %>
 	<%@ include file="footer/footerComponent.jsp" %> 
 </div><!-- /container -->

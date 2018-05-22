@@ -31,14 +31,18 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping(value = Routes.home )
-    public ModelAndView listProduct(@RequestParam(value = "page", defaultValue = "1") int page, ModelAndView model) throws IOException {
+    public ModelAndView listProduct(@RequestParam(value = "page", required = false, defaultValue = "1") int page, 
+    								@RequestParam(value = "itemsearch", required = false,defaultValue = "") String itemsearch, 
+    		                        ModelAndView model) throws IOException {
         
     	List<Product> listProduct = productService.getAllProducts();
-    	List<Product> listProductPaging = productService.getProductPaging(page);
+    	List<Product> listProductPaging = productService.getProductPaging(page,"");
+    	List<Product> listProductPagingSearch = productService.getProductPaging(page,itemsearch);
     	
 	    int startpage = (int) (page - AppGlobals.limitResultsPerPage > 0?page - AppGlobals.limitResultsPerPage:1);
 	    int endpage =  (listProduct.size() / AppGlobals.limitResultsPerPage)  + (listProduct.size() % AppGlobals.limitResultsPerPage>0?1:0);
-    
+	    
+	    int endpage_s =  (listProductPagingSearch.size() / AppGlobals.limitResultsPerPage)  + (listProductPagingSearch.size() % AppGlobals.limitResultsPerPage>0?1:0);
     	
     	
     	
@@ -51,10 +55,12 @@ public class ProductController {
         model.setViewName("homeComponent");
         /*--------------------------------------------------------------*/
         model.addObject("listProductPaging", listProductPaging);
+        model.addObject("listProductPagingSearch", listProductPagingSearch);
         model.addObject("startpage",startpage);
         model.addObject("endpage",endpage);
+        model.addObject("endpage_s",endpage_s);
 
-        System.out.println(listProduct.size());
+        System.out.println(listProductPagingSearch.size());
         System.out.println(listProduct.size() / AppGlobals.limitResultsPerPage);
         System.out.println(listProduct.size() % AppGlobals.limitResultsPerPage>0?1:0);
         

@@ -138,7 +138,7 @@
 											<span class="pull-right">
 												<button (click)="addCart(${pro.productId})" class="shopBtn" data-toggle="modal" data-target="#myModal" title="Thêm giỏ hàng">
 												<span class="icon-plus"></span></button>
-												<fmt:formatNumber value="${pro.price}" type="currency" currencySymbol=""/>
+												<fmt:formatNumber value="${pro.price}" type="currency"  currencyCode="USD" currencySymbol=""/>
 											</span>
 										</h4>
 									</div>

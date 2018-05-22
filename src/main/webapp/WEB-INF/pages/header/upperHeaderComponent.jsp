@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="com.fjs.banhangonline.controller.AppGlobals"%>
 
 <!-- 	Upper Header Section -->
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -13,9 +14,13 @@
 					<a href="#"><span class="icon-youtube"></span></a>
 					<a href="#"><span class="icon-tumblr"></span></a>
 				</div>
+				
+				<c:if test="${param.tabName == 'aboutus'}"><%AppGlobals.shareObj="aboutus";%> </c:if>
+				<c:if test="${param.tabName == 'contact'}"><%AppGlobals.shareObj="contact";%> </c:if>
+				
 				<a href="${home_url}" class="active"> <span class="icon-home"></span> Trang chủ</a> 
-				<a href="contact" class="active"><span class="icon-edit"></span> Liên hệ</a>
-				<a href="aboutUs" class="active"><span class="icon-envelope"></span> Giới thiệu</a>
+				<a href="${home_url}?tabName=contact" class="active"><span class="icon-edit"></span> Liên hệ</a>
+				<a href="${home_url}?tabName=aboutus" class="active"><span class="icon-envelope"></span> Giới thiệu</a>
 				<%-- <a href="cart" class="active"><span class="icon-shopping-cart"></span> {{totalCart}} Sản phẩm - <span class="badge badge-warning"> ${{totalCurrency | number: '1.2-2'}}</span></a> --%>
 				<app-login></app-login> 
 			</div>

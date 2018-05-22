@@ -46,10 +46,12 @@
 				<ul class="nav">
 		
 					<%-- <c:set var="url" value="${pageContext.request.requestURI}" /> --%>
-					<%-- <c:out value="${url}"></c:out> --%>
+					<%-- <c:out value="<%=AppGlobals.shareObj%>"></c:out>  --%>
 					
 					<c:if test="${param.tabName == ''}"><%AppGlobals.shareObj="home";%> </c:if>
 					<c:if test="${param.tabName == 'productlist'}"><%AppGlobals.shareObj="productlist";%> </c:if>
+					<c:if test="${param.tabName == 'generalcontent'}"><%AppGlobals.shareObj="generalcontent";%> </c:if>
+					<c:if test="${param.itemsearch != null}"><%AppGlobals.shareObj="itemsearch";%> </c:if> 
 					
 					<c:set var="url" value="<%=AppGlobals.shareObj%>" />
 					
@@ -62,8 +64,8 @@
 					<li <c:if test = "${fn:contains(url, 'productfavorite')}">class="active"</c:if> >
 						<a href="productfavorite">Sản phẩm yêu thích</a>
 					</li>
-					<li <c:if test = "${fn:contains(url, 'generalContent')}">class="active"</c:if> >
-						<a href="generalContent">Nội dung</a>
+					<li <c:if test = "${fn:contains(url, 'generalcontent')}">class="active"</c:if> >
+						<a href="${home_url}?tabName=generalcontent">Nội dung</a>
 					</li>
 
 					<li id="admin" style="visibility: hidden" <c:if test = "${fn:contains(url, 'admin')}">class="active"</c:if> >
@@ -71,7 +73,8 @@
 					</li> 
 					
 					<form action="#" class="navbar-search pull-left">
-						<input style="height: 30px" type="text" placeholder="Search"  [(ngModel)]="itemsearch" name="itemsearch" (keyup.enter)="gotoSearch()">
+						<!-- <input style="height: 30px" type="text" placeholder="Search"  [(ngModel)]="itemsearch" name="itemsearch" (keyup.enter)="gotoSearch()"> -->
+						<input style="height: 30px" type="text" placeholder="Search"  name="itemsearch"  onKeyDown="gotoSearch()">
 					</form>
 				</ul>
 			</div>
