@@ -12,8 +12,6 @@ import com.fjs.banhangonline.model.Product;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
-	
-	
 
 	@Autowired
     private SessionFactory sessionFactory;

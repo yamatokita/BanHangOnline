@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fjs.banhangonline.model.Contact;
 import com.fjs.banhangonline.model.Product;
 import com.fjs.banhangonline.service.ProductService;
 
@@ -31,7 +32,8 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping(value = Routes.home )
-    public ModelAndView listProduct(@RequestParam(value = "page", required = false, defaultValue = "1") int page, 
+    public ModelAndView listProduct(@RequestParam(value = "tabName", required = false, defaultValue = "") String tabName, 
+    								@RequestParam(value = "page", required = false, defaultValue = "1") int page, 
     								@RequestParam(value = "itemsearch", required = false,defaultValue = "") String itemsearch, 
     		                        ModelAndView model) throws IOException {
         
@@ -59,7 +61,14 @@ public class ProductController {
         model.addObject("startpage",startpage);
         model.addObject("endpage",endpage);
         model.addObject("endpage_s",endpage_s);
-
+        
+        if (tabName == "contact") {
+        	System.out.println("contact");
+        	Contact contact = new Contact();
+        	model.addObject("contact",contact);
+        }
+        
+        System.out.println(tabName);
         System.out.println(listProductPagingSearch.size());
         System.out.println(listProduct.size() / AppGlobals.limitResultsPerPage);
         System.out.println(listProduct.size() % AppGlobals.limitResultsPerPage>0?1:0);
