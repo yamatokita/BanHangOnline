@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <hr class="soften">
 <div class="well well-small">
@@ -28,65 +29,55 @@
     </div>
     </div>
     
-   <!--  <div class="span4">
+   <div class="span4">
     <h4>Góp ý với chúng tôi </h4>
-    <form class="form-horizontal" name="form" (ngSubmit)="contactForm.form.valid && addContact()" #contactForm="ngForm" novalidate>
+    <form:form class="form-horizontal" name="formContact" action="${home_url}?tabName=contact" method="post" modelAttribute="contact">
     <fieldset>
         <div class="control-group">
        
-            <input type="text" placeholder="Tên hiển thị" class="input-xlarge"
-            required
-            [(ngModel)]="model.username" name="username"
-            #username="ngModel"/>
+            <input type="text" placeholder="Tên hiển thị" class="input-xlarge" name="username"  id="username"   />
 
-            <div *ngIf="username.invalid && (username.dirty || username.touched)"
+            <!-- <div *ngIf="username.invalid && (username.dirty || username.touched)"
                 class="form-danger">
                 <div *ngIf="username.errors.required">
                     Tên hiển thị chưa được nhập.
                 </div>
-            </div>
+            </div> -->
         </div>
 
        <div class="control-group">
        
-        <input type="text" placeholder="Email" class="input-xlarge"
-          required
-          [(ngModel)]="model.email" name="email"
-          #email="ngModel"/>
+        <input type="text" placeholder="Email" class="input-xlarge"  name="email" id="email" />
 
-        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+        <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)"
               class="form-danger">
             <div *ngIf="email.errors.required">
                 Email chưa được nhập.
             </div>
-        </div>
+        </div> -->
        
       </div>
-       <div class="control-group">
+      <div class="control-group">
        
-          <input type="text" placeholder="Nội dung góp ý" class="input-xlarge"
-          required
-          [(ngModel)]="model.subject" name="subject"
-          #subject="ngModel"/>
+          <input type="text" placeholder="Chủ đề" class="input-xlarge" name="subject" id="subject" />
 
-          <div *ngIf="subject.invalid && (subject.dirty || subject.touched)"
+         <!--  <div *ngIf="subject.invalid && (subject.dirty || subject.touched)"
               class="form-danger">
             <div *ngIf="subject.errors.required">
             Nội dung chưa được nhập.
             </div>
           </div>
-      
+       -->
       </div>
-      <div class="control-group">
-        <textarea rows="3" id="textarea" class="input-xlarge"
-          [(ngModel)]="model.comment" name="comment"
-          #comment="ngModel">
-        </textarea>
-      </div>
+     <div class="control-group">
+        <textarea rows="3" class="input-xlarge" name="comment" id="comment" ></textarea>
+     </div> 
 
-        <input type="submit"  name="submitContact" value="Gửi góp ý" class="exclusive shopBtn">
+        <input type="submit"  name="submitContact" id="submitContact" value="Gửi góp ý" class="exclusive shopBtn"/>
 
     </fieldset>
-  </form>
-    </div> -->
+  	</form:form>
+    </div>
+    <script src="/resources/js/jquery-3.1.1.min.js"></script>
+	<script src="/resources/js/form-validation.js"></script>
 </div>
