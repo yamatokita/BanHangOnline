@@ -48,6 +48,8 @@
 					<%-- <c:set var="url" value="${pageContext.request.requestURI}" /> --%>
 					<%-- <c:out value="<%=AppGlobals.shareObj%>"></c:out>  --%>
 					
+					<c:if test="${not empty param.message}"><script>alert("${param.message}")</script></c:if>
+					
 					<c:if test="${param.tabName == ''}"><%AppGlobals.shareObj="home";%> </c:if>
 					<c:if test="${param.tabName == 'productlist'}"><%AppGlobals.shareObj="productlist";%> </c:if>
 					<c:if test="${param.tabName == 'generalcontent'}"><%AppGlobals.shareObj="generalcontent";%> </c:if>

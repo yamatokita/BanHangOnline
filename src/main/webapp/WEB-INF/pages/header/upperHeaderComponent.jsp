@@ -17,12 +17,13 @@
 				
 				<c:if test="${param.tabName == 'aboutus'}"><%AppGlobals.shareObj="aboutus";%> </c:if>
 				<c:if test="${param.tabName == 'contact'}"><%AppGlobals.shareObj="contact";%> </c:if>
+				<c:if test="${param.tabName == 'register'}"><%AppGlobals.shareObj="register";%> </c:if>
 				
-				<a href="${home_url}" class="active"> <span class="icon-home"></span> Trang chủ</a> 
-				<a href="${home_url}?tabName=contact" class="active"><span class="icon-edit"></span> Liên hệ</a>
-				<a href="${home_url}?tabName=aboutus" class="active"><span class="icon-envelope"></span> Giới thiệu</a>
+				<a href="${home_url}" class=""> <span class="icon-home"></span> Trang chủ</a> 
+				<a href="${home_url}?tabName=contact" class=""><span class="icon-edit"></span> Liên hệ</a>
+				<a href="${home_url}?tabName=aboutus" class=""><span class="icon-envelope"></span> Giới thiệu</a>
 				<%-- <a href="cart" class="active"><span class="icon-shopping-cart"></span> {{totalCart}} Sản phẩm - <span class="badge badge-warning"> ${{totalCurrency | number: '1.2-2'}}</span></a> --%>
-				<app-login></app-login> 
+				<%@ include file="../login/loginComponent.jsp" %>
 			</div>
 			<!-- <router-outlet></router-outlet> -->
 		</div>

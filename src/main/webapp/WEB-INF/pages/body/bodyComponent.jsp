@@ -132,13 +132,15 @@
 											<a class="defaultBtn" href="/products/${pro.productId}" title="Click to view">
 												<span class="icon-zoom-in"></span>
 											</a>
+						
 											
-											<%-- <div class="pull-right">${{pro.price | number: '1.2-2'}}</div> --%>
+											<button (click)="addCart(${pro.productId})" class="shopBtn" data-toggle="modal" data-target="#myModal" title="Thêm giỏ hàng">
+												<span class="icon-plus"></span>
+											</button>
+						
 											
 											<span class="pull-right">
-												<button (click)="addCart(${pro.productId})" class="shopBtn" data-toggle="modal" data-target="#myModal" title="Thêm giỏ hàng">
-												<span class="icon-plus"></span></button>
-												<fmt:formatNumber value="${pro.price}" type="currency"  currencyCode="USD" currencySymbol=""/>
+												<fmt:formatNumber value="${pro.price}" type="currency"  currencySymbol="$"/> 
 											</span>
 										</h4>
 									</div>

@@ -43,7 +43,7 @@
 									<div class="caption">
 										<h4>
 											<a class="defaultBtn" href ="/products/${prod.productId}">Xem ngay</a> 
-											<span class="pull-right"><fmt:formatNumber value="${prod.price}" type="currency" currencyCode="USD" currencySymbol=""/></span>
+											<span class="pull-right"><fmt:formatNumber value="${prod.price}" type="currency" currencySymbol="$"/></span>
 										</h4>
 									</div>
 								</div>

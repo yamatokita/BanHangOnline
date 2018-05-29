@@ -22,7 +22,7 @@
 	
 					<div class="span5 alignR">
 						<form class="form-horizontal qtyFrm">
-							<h3><fmt:formatNumber value="${pro.price}" type="currency" currencyCode="USD" currencySymbol=""/></h3>
+							<h3><fmt:formatNumber value="${pro.price}" type="currency" currencySymbol="$"/></h3>
 							<label class="checkbox"><input type="checkbox"> Thêm vào mục yêu thích</label>
 							<div class="btn-group">
 								<button (click)="addCart(${pro.productId})" class="defaultBtn" data-toggle="modal" data-target="#myModal">

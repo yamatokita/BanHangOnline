@@ -31,7 +31,7 @@
     
    <div class="span4">
     <h4>Góp ý với chúng tôi </h4>
-    <form:form class="form-horizontal" name="formContact" action="${home_url}?tabName=contact" method="post" modelAttribute="contact">
+    <form:form class="form-horizontal" name="formContact" action="${home_url}/saveContact" method="post" modelAttribute="contact">
     <fieldset>
         <div class="control-group">
        

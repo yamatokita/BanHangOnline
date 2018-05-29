@@ -60,6 +60,10 @@
 	<c:if test = "${fn:contains(url, 'itemsearch')}">
 		<%@ include file="search/searchComponent.jsp" %>   
 	</c:if> 
+	
+	<c:if test = "${fn:contains(url, 'register')}">
+		<%@ include file="register/registerComponent.jsp" %>   
+	</c:if> 
 
 
 	<%@ include file="footer/clientsComponent.jsp" %>
