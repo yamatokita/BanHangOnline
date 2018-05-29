@@ -62,11 +62,11 @@ public class ProductController {
         model.addObject("endpage",endpage);
         model.addObject("endpage_s",endpage_s);
         
-        if (tabName == "contact") {
+        /*if (tabName == "contact") {
         	System.out.println("contact");
         	Contact contact = new Contact();
         	model.addObject("contact",contact);
-        }
+        }*/
         
         System.out.println(tabName);
         System.out.println(listProductPagingSearch.size());
