@@ -24,6 +24,13 @@ public class ProductDAOImpl implements ProductDAO {
     }
     
     @SuppressWarnings("unchecked")
+    public List<Product> getNewProducts() {
+    	return sessionFactory.getCurrentSession().createQuery("from Product").setMaxResults(8)
+                .list();
+    	
+    }
+    
+    @SuppressWarnings("unchecked")
     public List<Product> getProductPaging(int page, String itemsearch) {
     	
     	String sql ="";

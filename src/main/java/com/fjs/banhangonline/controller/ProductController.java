@@ -38,6 +38,8 @@ public class ProductController {
     		                        ModelAndView model) throws IOException {
         
     	List<Product> listProduct = productService.getAllProducts();
+    	List<Product> listNewProduct = productService.getNewProducts();
+    	
     	List<Product> listProductPaging = productService.getProductPaging(page,"");
     	List<Product> listProductPagingSearch = productService.getProductPaging(page,itemsearch);
     	
@@ -51,6 +53,7 @@ public class ProductController {
         AppGlobals.shareObj = "home";
         
         model.addObject("listProduct", listProduct);
+        model.addObject("listNewProduct", listNewProduct);
 
         model.addObject("home_url", Routes.home );
         model.addObject("allProdcuts_url", Routes.home );

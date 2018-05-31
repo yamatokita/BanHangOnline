@@ -21,6 +21,11 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Transactional
+	public List<Product> getNewProducts(){
+		return productDao.getNewProducts();
+	}
+	
+	@Transactional
 	public List<Product> getProductPaging(int page, String itemsearch){
 		return productDao.getProductPaging(page, itemsearch);
 	}

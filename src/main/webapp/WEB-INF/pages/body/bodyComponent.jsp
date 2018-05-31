@@ -54,6 +54,7 @@
 			</div>
 		</div>
 
+
 		<!--Sản phẩm mới-->
 		<div class="well well-small">
 			<h3>Sản phẩm mới </h3>
@@ -62,43 +63,44 @@
 				<div id="newProductCar" class="carousel slide">
 					<div class="carousel-inner">
 					
+						<c:forEach var="product" items="${listNewProduct}" varStatus="loop" step="4">
 						<div class="item" >
 							<%-- <jsp:useBean id="listarProduct" class="com.fjs.banhangonline.controller.BodyController" scope="request"/> --%>
-							<c:forEach var="product" items="${listProduct}" varStatus="loop">
+							
 								<%-- <p> "${listProduct.size()}"</p> --%>
 								
 								<ul class="thumbnails">
 									
-										<c:set var="arr_index" value="${loop.index*4 + 3}"/>
-										<c:set var="arr_size" value="${fn:length(listProduct)/4}"/>
-										<fmt:parseNumber var="arr_number" integerOnly="true" type="number" value="${arr_size}"/>
-										
-										<%-- <c:out value="${arr_index}"></c:out>
-										<c:out value="${arr_number}"></c:out>--%>
-										
-										<c:if test="${loop.index <= arr_number}">     
-											<c:forEach var = "i" begin = "0" end = "3">
-									         	<c:set var="pro" value="${listProduct[loop.index*4 + i]}"></c:set>
-									         	
-									         	<c:if test="${not empty pro.productId}">
-										         	<li class="span3" >
-											         	<div class="thumbnail" >
-															
-																<a class="zoomTool" href="/products/${pro.productId}" title="add to cart">
-																	<span class="icon-search"></span> XEM NGAY</a>
-																<a href="#" class="tag"></a>
-																<a href="/products/${pro.productId}">
-																	<img src="${pro.imageUrl}" alt="bootstrap-ring">
-																</a>
-														 </div>
-													 </li>
-												</c:if>
-									    	 </c:forEach> 
-										</c:if>   
+									<%-- <c:set var="arr_index" value="${loop.index*4 + 3}"/> --%>
+									<%-- <c:set var="arr_size" value="${fn:length(listNewProduct)/4}"/>
+									<fmt:parseNumber var="arr_number" integerOnly="true" type="number" value="${arr_size}"/>
+									
+									<c:out value="${arr_size}"></c:out>
+									<c:out value="${arr_number}"></c:out>
+									<c:out value="${loop.index}"></c:out> --%>
+									
+									<%-- <c:if test="${loop.index < arr_number}">  --%>    
+										<c:forEach var = "i" begin = "0" end = "3">
+								         	<c:set var="pro" value="${listNewProduct[loop.index + i]}"></c:set>
+								         	
+								         	<c:if test="${not empty pro.productId}">
+									         	<li class="span3" >
+										         	<div class="thumbnail" >
+														
+															<a class="zoomTool" href="/products/${pro.productId}" title="add to cart">
+																<span class="icon-search"></span> XEM NGAY</a>
+															<a href="#" class="tag"></a>
+															<a href="/products/${pro.productId}">
+																<img src="${pro.imageUrl}" alt="bootstrap-ring">
+															</a>
+													 </div>
+												 </li>
+											</c:if>
+								    	 </c:forEach> 
+									<%-- </c:if>  --%>  
 								</ul>
-							</c:forEach>
 						</div> 
-						
+						</c:forEach>
 					</div>
 					<a class="left carousel-control" href="#newProductCar" data-slide="prev">&lsaquo;</a>
 					<a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>
@@ -114,41 +116,41 @@
 			</h3> 
 			<hr class="soften" />
 			<div class="row-fluid">
-				<ul class="thumbnails">
-				
-					
-					<c:forEach var="pro" items="${listProduct}" varStatus="loop">
-						<div>
-							<li class="span3">
-								<div class="thumbnail" >
-									<a class="zoomTool" href="/products/${pro.productId}" title="add to cart">
-										<span class="icon-search"></span> XEM NGAY</a>
-									<a href="/products/${pro.productId}">
-										<img src="${pro.imageUrl}" alt="">
-									</a>
-									<div class="caption">
-										<h5>${listProduct[loop.index].productName}</h5>
-										<h4>
-											<a class="defaultBtn" href="/products/${pro.productId}" title="Click to view">
-												<span class="icon-zoom-in"></span>
-											</a>
-						
-											
-											<button (click)="addCart(${pro.productId})" class="shopBtn" data-toggle="modal" data-target="#myModal" title="Thêm giỏ hàng">
-												<span class="icon-plus"></span>
-											</button>
-						
-											
-											<span class="pull-right">
-												<fmt:formatNumber value="${pro.price}" type="currency"  currencySymbol="$"/> 
-											</span>
-										</h4>
+				<c:forEach var="product" items="${listProduct}" varStatus="loop" step="3">
+					<ul class="thumbnails">
+						<c:forEach var = "i" begin = "0" end = "2">
+							<c:set var="pro" value="${listProduct[loop.index + i]}"></c:set>
+							
+							<c:if test="${not empty pro.productId}">
+								<li class="span4">
+									<div class="thumbnail" >
+										<a class="zoomTool" href="/products/${pro.productId}" title="add to cart">
+											<span class="icon-search"></span> XEM NGAY</a>
+										<a href="/products/${pro.productId}">
+											<img src="${pro.imageUrl}" alt="">
+										</a>
+										<div class="caption">
+											<h5>${listProduct[loop.index].productName}</h5>
+											<h4>
+												<a class="defaultBtn" href="/products/${pro.productId}" title="Click to view">
+													<span class="icon-zoom-in"></span>
+												</a>
+							
+												<button (click)="addCart(${pro.productId})" class="shopBtn" data-toggle="modal" data-target="#myModal" title="Thêm giỏ hàng">
+													<span class="icon-plus"></span>
+												</button>
+							
+												<span class="pull-right">
+													<fmt:formatNumber value="${pro.price}" type="currency"  currencySymbol="$"/> 
+												</span>
+											</h4>
+										</div>
 									</div>
-								</div>
-							</li>
-						</div>
-					</c:forEach>
-				</ul>
+								</li>
+							</c:if>
+						</c:forEach>
+					</ul>
+				</c:forEach>
 			</div>
 		</div>
 
