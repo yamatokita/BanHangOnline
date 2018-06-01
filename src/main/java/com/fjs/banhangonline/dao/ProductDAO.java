@@ -12,6 +12,7 @@ public interface ProductDAO {
 	public Product addProduct(Product product);
 	public Product updateProduct(Product product);
 	public void deleteProduct(int product_id);
+	public int getProductPages(String itemsearch);
 	public List<Product> getProductPaging(int page, String itemsearch);
 
 }

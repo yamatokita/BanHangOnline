@@ -44,9 +44,8 @@ public class ProductController {
     	List<Product> listProductPagingSearch = productService.getProductPaging(page,itemsearch);
     	
 	    int startpage = (int) (page - AppGlobals.limitResultsPerPage > 0?page - AppGlobals.limitResultsPerPage:1);
-	    int endpage =  (listProduct.size() / AppGlobals.limitResultsPerPage)  + (listProduct.size() % AppGlobals.limitResultsPerPage>0?1:0);
-	    
-	    int endpage_s =  (listProductPagingSearch.size() / AppGlobals.limitResultsPerPage)  + (listProductPagingSearch.size() % AppGlobals.limitResultsPerPage>0?1:0);
+	    int endpage =  productService.getProductPages("");
+	    int endpage_s =  productService.getProductPages(itemsearch);
     	
     	
     	

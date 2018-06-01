@@ -13,5 +13,6 @@ public interface ProductService {
 	public Product updateProduct(Product product);
 	public void deleteProduct(int product_id);
 	public List<Product> getProductPaging(int page, String itemsearch);
+	public int getProductPages(String itemsearch);
 
 }

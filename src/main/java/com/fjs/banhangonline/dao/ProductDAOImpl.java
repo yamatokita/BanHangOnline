@@ -31,6 +31,41 @@ public class ProductDAOImpl implements ProductDAO {
     }
     
     @SuppressWarnings("unchecked")
+    public int getProductPages(String itemsearch) {
+    	
+    	List<Product> proList;
+    	String sql ="";
+    	if (itemsearch !=null) {
+    		sql = "Where productName like :productName Or productDetail like :productDetail ";
+    		
+    		 /*try {
+    			 int isearch = Integer.parseInt(itemsearch);
+    			 sql += "Or price like :price ";
+ 			} catch (NumberFormatException e) {
+ 			    // string is not a number
+ 			}*/
+    	}
+    	 Query q = sessionFactory.getCurrentSession().createQuery(
+                 "from Product " + sql);
+    	 
+    	 if (itemsearch !=null) {
+    		 q.setParameter("productName", "%" + itemsearch + "%");
+    		 
+    		 /*try {
+			    int isearch = Integer.parseInt(itemsearch);
+			    q.setParameter("price", "%" + isearch + "%");
+			} catch (NumberFormatException e) {
+			    // string is not a number
+			}*/
+    		 
+    		 q.setParameter("productDetail", "%" + itemsearch + "%");
+     	}
+    	 
+    	 proList = (List<Product>) q.list();
+         return (proList.size() / AppGlobals.limitResultsPerPage)  + (proList.size() % AppGlobals.limitResultsPerPage>0?1:0);
+    }
+    
+    @SuppressWarnings("unchecked")
     public List<Product> getProductPaging(int page, String itemsearch) {
     	
     	String sql ="";
